@@ -57,9 +57,13 @@ body {
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
+  <a href="patienttNavii.php" target="iframe_a" id="ww">Patient</a>
   <a href="wardNavii.php" target="iframe_a" id="ww">Ward</a>
   <a href="roomNavii.php" target="iframe_a" id="rr">Room</a>
-  <a href="MReportDE.php" target="iframe_a" id="rr">Medical report</a>
+  <a href="MReporttNavii.php" target="iframe_a" id="rr">Medical report</a>
+  <a href="admissionNavii.php" target="iframe_a" id="rr">Admission</a>
+  <a href="appoinmentNavii.php" target="iframe_a" id="rr">Appointment</a>
+
 
 
 

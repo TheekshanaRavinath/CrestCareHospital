@@ -21,6 +21,10 @@ if($result->num_rows > 0){
 	}else if($position=="front officer"){
 
 			include("main Menu.php");
+			
+	}elseif ($position=="patient") {
+
+			include("main Menu_patient.php");
 	}
 	
 	

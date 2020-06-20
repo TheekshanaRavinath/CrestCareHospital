@@ -11,22 +11,20 @@
 	include 'DBconnection.php';
 	
  
-	$result = $conn->query("SELECT max(mrID) FROM medical_report ");
+	$result = $conn->query("SELECT max(adID) FROM admission ");
 	$row = mysqli_fetch_array($result,MYSQLI_NUM);
 		
   ?>
 
 
 <script type="text/javascript">
-  function setPID(){
+  function setRoomID(){
     var t1 = document.getElementById('selectbox2').value;
-    document.getElementById('idP').value = t1;
+    document.getElementById('idWard').value = t1;
   }
-
-
-
+</script>
   
-
+<script>
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -72,24 +70,24 @@ input[type=submit].btn-block{
 }
 	
 </style>
-<body background="images/Untitled-1.jpg" onload="startTime(); setPID();">
-<center><label style="font-size:250%">Add new medical report</label></center>
-<form action="MReportReg.php" method="post" id="myForm">
+<body background="images/Untitled-1.jpg" onload="startTime(); setRoomID();">
+<center><label style="font-size:250%">Add new admission</label></center>
+<form action="admissionReg.php" method="post" id="myForm">
 
 	<div class="row">
 		<div class="col-sm-4">
-			<label>Medical report number</label>
-			<input type="text" name="mrNo" class="form-control" readonly="" value="<?php echo $row[0]+1 ?>" />
-			<label>Report date</label>
-			<input id="datee" type="text" name="mrDt" class="form-control" readonly="" />
+			<label>Admission number</label>
+			<input type="text" name="adNo" class="form-control" readonly="" value="<?php echo $row[0]+1 ?>" />
+			<label>Admission date</label>
+			<input id="datee" type="text" name="adDt" class="form-control" readonly="" />
 		</div>
 
 		<div class="col-sm-4">
 			<label>Patient disease</label>
-			<input type="text" name="mrdease" class="form-control" value="" />
+			<input type="text" name="pdease" class="form-control" />
 
-			<label>Report time</label>
-			<input id="time" type="text" name="mrTm" class="form-control" readonly="" />
+			<label>Admission time</label>
+			<input id="time" type="text" name="adTm" class="form-control" readonly="" />
 			
 
 			 	 
@@ -98,20 +96,18 @@ input[type=submit].btn-block{
 		<div class="col-sm-4">
 			
 			<label>Patient ID</label>
-			<select  id="selectbox2" name="id"  class="form-control" onclick="setPID()">
+			<select  id="selectbox2" name="id"  class="form-control" onclick="setRoomID()">
 			      <?php
 
-			      $sql = mysqli_query($conn, "SELECT pid FROM admission");
+			      $sql = mysqli_query($conn, "SELECT pid FROM patient");
 			      while ($row = $sql->fetch_assoc()){
 			      echo "<option value='" . $row['pid'] . "'>" . $row['pid'] . "</option>";
 			      }
 			      ?>
 			 </select>
-			 <input type="hidden" name="Pid" value="" id="idP"/>
-
-			 <label>Report description</label>
-			<textarea name="mrDesc" cols="40" class="form-control"></textarea>
-			 
+			 <label>Admission description</label>
+			<textarea name="adDesc" cols="40" class="form-control"></textarea>
+			 <input type="hidden" name="wid" value="" id="idWard"/>
 			<input type="submit" name="btnReg" value="Register" class="btn btn-lg btn-primary btn-block" />
 		</div>
 
